@@ -39,7 +39,9 @@ jobs:
         (startsWith(github.event.comment.body, '/bot run') ||
         startsWith(github.event.comment.body, '/bot skip --comment') ||
         startsWith(github.event.comment.body, '/bot reuse-pipeline') ||
-        startsWith(github.event.comment.body, '/bot kill'))
+        startsWith(github.event.comment.body, '/bot kill')) && contains(
+        fromJson('["zekunf-nv"]'),
+        github.actor)
     steps:
       - name: Check if comment is issued by authorized person
         run: blossom-ci
